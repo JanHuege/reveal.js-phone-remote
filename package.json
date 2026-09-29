@@ -1,0 +1,50 @@
+{
+  "name": "reveal-phone-remote",
+  "version": "0.1.0",
+  "description": "Control a reveal.js deck from your phone: speaker notes, timer, slide jump and a Logitech-style spotlight. No app, no cloud.",
+  "type": "module",
+  "author": "Jan Huege",
+  "license": "MIT",
+  "keywords": [
+    "reveal.js",
+    "reveal.js-plugin",
+    "remote",
+    "presenter",
+    "spotlight",
+    "speaker-notes",
+    "vite-plugin"
+  ],
+  "exports": {
+    ".": "./src/deck/plugin.js",
+    "./spotlight": "./src/deck/spotlight.js",
+    "./server": "./src/server/index.js",
+    "./vite": "./src/server/vite.js"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "example": "npm run dev -w examples/vite",
+    "example:preview": "npm run preview -w examples/vite",
+    "example:node": "npm start -w examples/node"
+  },
+  "workspaces": [
+    "examples/*"
+  ],
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0"
+  },
+  "peerDependencies": {
+    "reveal.js": ">=4",
+    "vite": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  }
+}

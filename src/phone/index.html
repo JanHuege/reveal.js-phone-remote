@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="%LANG%">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="%TITLE%" />
+    <meta name="theme-color" content="%THEME_COLOR%" />
+    <title>%TITLE%</title>
+    <link rel="stylesheet" href="%PREFIX%/remote.css" />
+    %THEME_CSS%
+    <script type="application/json" id="config">%CONFIG%</script>
+  </head>
+  <body>
+    <header class="bar">
+      <span class="dot" id="dot" data-i18n-title="connection"></span>
+      <span class="count" id="count">– / –</span>
+      <button class="timer" id="timer" type="button" data-i18n-label="timerToggle">0:00</button>
+      <button class="icon" id="reset" type="button" data-i18n-label="timerReset">↺</button>
+      <span class="clock" id="clock"></span>
+    </header>
+
+    <p class="banner" id="banner" hidden></p>
+
+    <section class="now">
+      <h1 id="title" data-i18n="connecting"></h1>
+      <p class="frag" id="frag" hidden></p>
+      <p class="up-next"><span data-i18n="upNext"></span> <span id="next">–</span></p>
+    </section>
+
+    <article class="notes" id="notes"></article>
+
+    <nav class="tools">
+      <button type="button" id="outline-open" data-i18n="slides"></button>
+      <button type="button" id="spot-open" data-i18n="spot"></button>
+      <button type="button" id="pause" data-i18n="black"></button>
+      <button type="button" id="smaller" data-i18n-label="notesSmaller">A−</button>
+      <button type="button" id="larger" data-i18n-label="notesLarger">A+</button>
+    </nav>
+
+    <nav class="pad">
+      <button type="button" class="prev" id="prev" data-i18n-label="prev">‹</button>
+      <div class="vert">
+        <button type="button" id="up" data-i18n-label="up">˄</button>
+        <button type="button" id="down" data-i18n-label="down">˅</button>
+      </div>
+      <button type="button" class="next" id="nextbtn" data-i18n-label="next">
+        <span data-i18n="next"></span> ›
+      </button>
+    </nav>
+
+    <dialog id="outline">
+      <form method="dialog" class="sheet-head">
+        <strong data-i18n="jumpTo"></strong>
+        <button type="submit" data-i18n="done"></button>
+      </form>
+      <ol id="outline-list"></ol>
+    </dialog>
+
+    <dialog id="spot" class="spot">
+      <form method="dialog" class="sheet-head">
+        <strong data-i18n="spotlight"></strong>
+        <button type="submit" data-i18n="done"></button>
+      </form>
+      <div class="pad-area" id="spot-pad">
+        <p data-i18n="spotHint"></p>
+      </div>
+      <div class="spot-opts">
+        <div class="seg" role="group" data-i18n-label="spotSize">
+          <button type="button" data-r="0.08">S</button>
+          <button type="button" data-r="0.14">M</button>
+          <button type="button" data-r="0.22">L</button>
+        </div>
+        <button type="button" id="spot-hold" aria-pressed="false" data-i18n="hold"></button>
+      </div>
+      <div class="spot-nav">
+        <button type="button" id="spot-prev" data-i18n-label="prev">‹</button>
+        <button type="button" id="spot-next" class="next" data-i18n-label="next">
+          <span data-i18n="next"></span> ›
+        </button>
+      </div>
+    </dialog>
+
+    <script type="module" src="%PREFIX%/remote.js"></script>
+  </body>
+</html>

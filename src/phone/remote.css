@@ -1,0 +1,392 @@
+/* Phone page – dark, so the phone doesn't glow in a dimmed room.
+   Theme it by overriding the custom properties below in your own stylesheet
+   (server option `css`). */
+
+:root {
+  --bg: #0b1020;
+  --panel: #161d33;
+  --line: #28314f;
+  --text: #e8eef8;
+  --muted: #8ea3c6;
+  --accent: #418fde;
+  --accent-text: #fff;
+  --highlight: #e0b400;
+  --highlight-text: #000;
+  --warning-bg: #4a3d00;
+  --online: #3ecf8e;
+  --offline: #c0392b;
+  --font: system-ui, -apple-system, sans-serif;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --notes: 20px;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: calc(env(safe-area-inset-top) + 10px) calc(env(safe-area-inset-right) + 16px)
+    calc(env(safe-area-inset-bottom) + 12px) calc(env(safe-area-inset-left) + 16px);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-text-size-adjust: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: var(--panel);
+  border-radius: var(--radius);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+button:active {
+  filter: brightness(1.4);
+}
+
+/* Header ------------------------------------------------------------------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+  font-size: 17px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--offline);
+  flex: none;
+}
+
+.dot.on {
+  background: var(--online);
+}
+
+.count {
+  font-weight: 700;
+}
+
+.timer {
+  margin-left: auto;
+  padding: 6px 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.timer.running {
+  color: var(--text);
+}
+
+.icon {
+  padding: 6px 10px;
+}
+
+.clock {
+  color: var(--muted);
+}
+
+.banner {
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--warning-bg);
+  border-left: 4px solid var(--highlight);
+  font-size: 15px;
+}
+
+/* Current slide -------------------------------------------------------------- */
+
+.now h1 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.frag,
+.up-next {
+  margin: 4px 0 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.frag {
+  color: var(--accent);
+}
+
+/* Notes ---------------------------------------------------------------------- */
+
+.notes {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 16px;
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  font-size: var(--notes);
+  line-height: 1.45;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.notes > :first-child {
+  margin-top: 0;
+}
+
+.notes ul,
+.notes ol {
+  padding-left: 1.2em;
+}
+
+.notes li::marker {
+  color: var(--highlight);
+}
+
+.notes .empty {
+  color: var(--muted);
+}
+
+/* Controls ------------------------------------------------------------------- */
+
+.tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto auto;
+  gap: 8px;
+}
+
+.tools button {
+  padding: 12px 14px;
+  font-size: 16px;
+}
+
+.tools button.active {
+  background: var(--highlight);
+  color: var(--highlight-text);
+}
+
+.pad {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 2.4fr;
+  gap: 10px;
+  height: min(26vh, 200px);
+}
+
+.pad button {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.pad .prev {
+  font-size: 44px;
+}
+
+.pad .next {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+/* Up/down: vertical slides in reveal.js. */
+.pad .vert {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+
+.pad button:disabled {
+  opacity: 0.3;
+}
+
+/* Landscape: notes left, buttons right. */
+@media (orientation: landscape) and (max-height: 500px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 34%;
+    grid-template-rows: auto auto auto 1fr auto;
+    gap: 8px 14px;
+  }
+
+  .bar,
+  .banner,
+  .now {
+    grid-column: 1 / -1;
+  }
+
+  .notes {
+    grid-column: 1;
+    grid-row: 4 / 6;
+  }
+
+  .tools {
+    grid-column: 2;
+    grid-row: 5;
+    gap: 6px;
+  }
+
+  .tools button {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .pad {
+    grid-column: 2;
+    grid-row: 4;
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+  }
+
+  .pad .next {
+    grid-column: 1 / -1;
+  }
+
+  .now h1 {
+    font-size: 20px;
+  }
+}
+
+/* Outline -------------------------------------------------------------------- */
+
+dialog {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: calc(env(safe-area-inset-top) + 10px) 16px env(safe-area-inset-bottom);
+  border: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.sheet-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.sheet-head button {
+  padding: 8px 16px;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+dialog ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+dialog li button {
+  width: 100%;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 17px;
+}
+
+dialog li button.sub {
+  padding-left: 36px;
+  color: var(--muted);
+}
+
+dialog li button.current {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+/* Spotlight ------------------------------------------------------------------ */
+
+dialog.spot[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 12px);
+}
+
+.pad-area {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  white-space: pre-line;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
+  background:
+    radial-gradient(circle, var(--line) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    var(--panel);
+  border-radius: var(--radius-xl);
+  touch-action: none;
+  -webkit-touch-callout: none;
+}
+
+.pad-area.active {
+  outline: 2px solid var(--accent);
+  color: var(--text);
+}
+
+.spot-opts {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.seg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.spot-opts button {
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+.spot-opts button.active,
+.spot-opts button[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.spot-nav {
+  display: grid;
+  grid-template-columns: 1fr 2.4fr;
+  gap: 10px;
+  height: 84px;
+}
+
+.spot-nav button {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.spot-nav .next {
+  background: var(--accent);
+  color: var(--accent-text);
+}

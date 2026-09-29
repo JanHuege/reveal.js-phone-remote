@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>reveal-phone-remote demo</title>
+    <!-- Served by server.js from node_modules – no bundler. -->
+    <link rel="stylesheet" href="/vendor/reveal.js/reveal.css" />
+    <link rel="stylesheet" href="/vendor/reveal.js/theme/white.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "reveal.js": "/vendor/reveal.js/reveal.mjs",
+          "reveal.js/plugin/notes": "/vendor/reveal.js/plugin/notes.mjs",
+          "reveal-phone-remote": "/vendor/reveal-phone-remote/plugin.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Phone Remote</h1>
+          <p>Scan the QR code in your terminal with your phone.</p>
+          <aside class="notes">
+            <p>These are speaker notes. They show up on your phone.</p>
+            <p>Tap <strong>Next</strong> or swipe left over the notes. The timer starts with the first “Next”.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Speaker notes</h2>
+          <ul>
+            <li>Notes of the current slide on the phone</li>
+            <li>Title of the next slide</li>
+            <li>A− / A+ change the notes size</li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>Notes can contain <em>HTML</em>: lists, emphasis, …</li>
+              <li>Try A+ to make them larger.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Fragments</h2>
+          <p class="fragment">One</p>
+          <p class="fragment">Two</p>
+          <p class="fragment">Three</p>
+          <aside class="notes">
+            <p>The phone shows “Step n / 3” while you step through the fragments.</p>
+          </aside>
+        </section>
+
+        <section>
+          <section>
+            <h2>Vertical slides</h2>
+            <p>“Slides” on the phone lists every slide – sub-slides indented.</p>
+            <aside class="notes"><p>Open “Slides” and jump to the last slide.</p></aside>
+          </section>
+          <section>
+            <h2>A sub-slide</h2>
+            <p>Reached with “Next” or from the outline.</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Spotlight</h2>
+          <div class="grid">
+            <div>Alpha</div>
+            <div>Beta</div>
+            <div>Gamma</div>
+            <div>Delta</div>
+            <div>Epsilon</div>
+            <div>Zeta</div>
+          </div>
+          <aside class="notes">
+            <p>Tap <strong>Spot</strong>. Touch the pad – everything but a circle dims. Move to point at a box, lift to turn it off.</p>
+            <p>“Hold” keeps the spot, S / M / L sets its size.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Black screen</h2>
+          <p>“Black” on the phone pauses the deck, “Show” brings it back.</p>
+          <aside class="notes"><p>Same as pressing B on the keyboard.</p></aside>
+        </section>
+
+        <section>
+          <h2>That’s it</h2>
+          <p>
+            <a href="https://github.com/">reveal-phone-remote</a> ·
+            <code>npm install reveal-phone-remote</code>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      .grid div {
+        padding: 48px 0;
+        border: 2px solid currentColor;
+        border-radius: 12px;
+      }
+    </style>
+
+    <script type="module">
+      import Reveal from 'reveal.js';
+      import Notes from 'reveal.js/plugin/notes';
+      import PhoneRemote from 'reveal-phone-remote';
+
+      Reveal.initialize({
+        hash: true,
+        plugins: [Notes, PhoneRemote],
+      });
+    </script>
+  </body>
+</html>

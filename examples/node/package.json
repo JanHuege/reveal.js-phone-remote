@@ -1,0 +1,12 @@
+{
+  "name": "reveal-phone-remote-example-node",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "reveal-phone-remote": "file:../..",
+    "reveal.js": "^6.0.2"
+  }
+}
