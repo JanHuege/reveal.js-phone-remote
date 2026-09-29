@@ -13,6 +13,7 @@ const ui = {
   dot: $("dot"),
   count: $("count"),
   timer: $("timer"),
+  timerToggle: $("timer-toggle"),
   clock: $("clock"),
   banner: $("banner"),
   title: $("title"),
@@ -55,6 +56,8 @@ function connect() {
   events.addEventListener("state", (e) => render(JSON.parse(e.data)));
 }
 
+const NAV = new Set(["right", "left", "up", "down", "goto"]);
+
 async function command(cmd, extra = {}) {
   try {
     const res = await fetch(`${prefix}/command`, {
@@ -66,7 +69,7 @@ async function command(cmd, extra = {}) {
   } catch {
     banner(t("unreachable"));
   }
-  if (!timer.running && !timer.elapsed && cmd === "right") toggleTimer();
+  if (!timer.running && !timer.elapsed && NAV.has(cmd)) toggleTimer();
 }
 
 // ---------------------------------------------------------------------------
@@ -125,7 +128,8 @@ function renderOutline() {
 // Timer and clock
 //
 // Runs on the phone, not the server: survives a restart of the deck. Starts
-// with the first "Next", tapping pauses it.
+// with the first navigation unless started by hand; ▶/❚❚ or tapping the
+// time starts and pauses it, ↺ resets it.
 // ---------------------------------------------------------------------------
 
 const TIMER_KEY = `${STORE}timer`;
@@ -170,6 +174,7 @@ function tick() {
   const s = Math.floor(ms / 1000);
   ui.timer.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
   ui.timer.classList.toggle("running", timer.running);
+  ui.timerToggle.textContent = timer.running ? "❚❚" : "▶";
 
   ui.clock.textContent = new Date().toLocaleTimeString(lang, {
     hour: "2-digit",
@@ -200,6 +205,7 @@ ui.up.addEventListener("click", () => command("up"));
 ui.down.addEventListener("click", () => command("down"));
 ui.pause.addEventListener("click", () => command("pause"));
 ui.timer.addEventListener("click", toggleTimer);
+ui.timerToggle.addEventListener("click", toggleTimer);
 $("reset").addEventListener("click", resetTimer);
 $("smaller").addEventListener("click", () => setSize(size - 2));
 $("larger").addEventListener("click", () => setSize(size + 2));

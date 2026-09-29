@@ -4,7 +4,7 @@ Control a [reveal.js](https://revealjs.com) deck from your phone – no app, no
 cloud, no second server. Scan a QR code in the terminal and the phone shows:
 
 - slide number, title, next slide and speaker notes (A−/A+ for size)
-- timer (starts with the first "Next") and clock
+- timer (▶ to start, ↺ to reset; otherwise starts with the first navigation) and clock
 - Next / Back, Up / Down for vertical slides, black screen (reveal's pause), jump to any slide
 - swipe over the notes to change slides
 - **Spotlight** – a trackpad like the Logitech Spotlight: touch and everything
