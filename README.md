@@ -1,5 +1,10 @@
 # reveal.js-phone-remote
 
+[![npm version](https://img.shields.io/npm/v/reveal.js-phone-remote.svg)](https://www.npmjs.com/package/reveal.js-phone-remote)
+[![npm downloads](https://img.shields.io/npm/dm/reveal.js-phone-remote.svg)](https://www.npmjs.com/package/reveal.js-phone-remote)
+[![node](https://img.shields.io/node/v/reveal.js-phone-remote.svg)](https://nodejs.org)
+[![license](https://img.shields.io/npm/l/reveal.js-phone-remote.svg)](https://github.com/JanHuege/reveal.js-phone-remote/blob/main/LICENSE)
+
 Control a [reveal.js](https://revealjs.com) deck from your phone – no app, no
 cloud, no second server. Scan a QR code in the terminal and the phone shows:
 
@@ -27,13 +32,16 @@ npm run example:node   # plain node:http – http://localhost:8000/
 ```
 
 Open the deck on the laptop and scan the QR code in the terminal with your
-phone. Details: [`examples/vite`](examples/vite/), [`examples/node`](examples/node/).
+phone. Details: [`examples/vite`](https://github.com/JanHuege/reveal.js-phone-remote/tree/main/examples/vite), [`examples/node`](https://github.com/JanHuege/reveal.js-phone-remote/tree/main/examples/node).
 
 ## Install
 
 ```sh
 npm install reveal.js-phone-remote
 ```
+
+Requirements: Node.js ≥ 18, reveal.js ≥ 4, and Vite ≥ 5 if you use the Vite
+plugin (optional otherwise).
 
 ## Usage with Vite
 
@@ -71,7 +79,7 @@ plugin stays silent.
 
 ## Usage without Vite
 
-See [`examples/node`](examples/node/) for a complete, bundler-free setup.
+See [`examples/node`](https://github.com/JanHuege/reveal.js-phone-remote/tree/main/examples/node) for a complete, bundler-free setup.
 
 ```js
 import http from 'node:http';
@@ -97,7 +105,7 @@ printConnectInfo(server, remote);
 | `key` | `$REMOTE_KEY` or random | Access key, embedded in the QR code. Set a fixed one to keep a home-screen bookmark valid across restarts. |
 | `prefix` | `'/_remote'` | URL prefix of all endpoints and the phone page. |
 | `lang` | `'en'` | Phone UI language: `'en'`, `'de'`. |
-| `strings` | `{}` | Override single UI strings, see `src/phone/i18n.js`. |
+| `strings` | `{}` | Override single UI strings, see [`src/phone/i18n.js`](https://github.com/JanHuege/reveal.js-phone-remote/blob/main/src/phone/i18n.js). |
 | `title` | `'Remote'` | Page title and home-screen name. |
 | `themeColor` | `'#0b1020'` | Browser chrome colour on the phone. |
 | `css` | – | Path to an extra stylesheet for the phone page. |
@@ -134,7 +142,7 @@ passed as `css`:
 }
 ```
 
-All properties: see the top of `src/phone/remote.css`.
+All properties: see the top of [`src/phone/remote.css`](https://github.com/JanHuege/reveal.js-phone-remote/blob/main/src/phone/remote.css).
 
 The spotlight's dim colour on the deck: `.reveal-spotlight { --spotlight-dim: rgb(0 0 0 / 0.8); }`.
 
@@ -179,6 +187,18 @@ Plain HTTP – use it in networks you trust, or a phone hotspot.
 | `POST <prefix>/state` | deck reports its state |
 | `POST <prefix>/command` (`X-Remote-Key`) | `next`, `prev`, `left`, `right`, `up`, `down`, `first`, `last`, `pause`, `goto {h, v}`, `spot {on, x, y, r}` |
 
+## Contributing
+
+Bugs and ideas: [open an issue](https://github.com/JanHuege/reveal.js-phone-remote/issues). Pull requests welcome – run
+`npm run example` to try changes against the demo deck.
+
+## Links
+
+- [npm package](https://www.npmjs.com/package/reveal.js-phone-remote)
+- [GitHub repository](https://github.com/JanHuege/reveal.js-phone-remote)
+- [Issues](https://github.com/JanHuege/reveal.js-phone-remote/issues)
+- [reveal.js](https://revealjs.com)
+
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/JanHuege/reveal.js-phone-remote/blob/main/LICENSE) © Jan Huege
