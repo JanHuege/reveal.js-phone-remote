@@ -1,10 +1,16 @@
 {
-  "name": "reveal-phone-remote",
+  "name": "reveal.js-phone-remote",
   "version": "0.1.0",
   "description": "Control a reveal.js deck from your phone: speaker notes, timer, slide jump and a Logitech-style spotlight. No app, no cloud.",
   "type": "module",
   "author": "Jan Huege",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanHuege/reveal.js-phone-remote.git"
+  },
+  "homepage": "https://github.com/JanHuege/reveal.js-phone-remote#readme",
+  "bugs": "https://github.com/JanHuege/reveal.js-phone-remote/issues",
   "keywords": [
     "reveal.js",
     "reveal.js-plugin",

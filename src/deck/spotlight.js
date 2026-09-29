@@ -2,7 +2,7 @@
 // Override the dim colour with `--spotlight-dim` on `.reveal-spotlight`.
 
 const FOLLOW = 0.35; // share of the remaining distance per frame
-const STYLE_ID = "reveal-phone-remote-spotlight";
+const STYLE_ID = "reveal.js-phone-remote-spotlight";
 const CSS = `
 .reveal-spotlight {
   position: fixed;

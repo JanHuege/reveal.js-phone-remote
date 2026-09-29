@@ -10,7 +10,7 @@ export default function phoneRemote(options = {}) {
   };
 
   return {
-    name: "reveal-phone-remote",
+    name: "reveal.js-phone-remote",
     config: () => ({
       server: { allowedHosts: [".local"] },
       preview: { allowedHosts: [".local"] },

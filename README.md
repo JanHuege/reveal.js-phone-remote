@@ -1,4 +1,4 @@
-# reveal-phone-remote
+# reveal.js-phone-remote
 
 Control a [reveal.js](https://revealjs.com) deck from your phone – no app, no
 cloud, no second server. Scan a QR code in the terminal and the phone shows:
@@ -20,7 +20,7 @@ node:http server) via Server-Sent Events. Only dependency: `qrcode-terminal`.
 The repository has a demo deck in two flavours:
 
 ```sh
-git clone <repo> && cd reveal-phone-remote
+git clone https://github.com/JanHuege/reveal.js-phone-remote.git && cd reveal.js-phone-remote
 npm install
 npm run example        # Vite            – http://localhost:5173/
 npm run example:node   # plain node:http – http://localhost:8000/
@@ -32,7 +32,7 @@ phone. Details: [`examples/vite`](examples/vite/), [`examples/node`](examples/no
 ## Install
 
 ```sh
-npm install reveal-phone-remote
+npm install reveal.js-phone-remote
 ```
 
 ## Usage with Vite
@@ -40,7 +40,7 @@ npm install reveal-phone-remote
 ```js
 // vite.config.js
 import { defineConfig } from 'vite';
-import phoneRemote from 'reveal-phone-remote/vite';
+import phoneRemote from 'reveal.js-phone-remote/vite';
 
 export default defineConfig({
   plugins: [phoneRemote()],
@@ -54,7 +54,7 @@ export default defineConfig({
 ```js
 // main.js
 import Reveal from 'reveal.js';
-import PhoneRemote from 'reveal-phone-remote';
+import PhoneRemote from 'reveal.js-phone-remote';
 
 Reveal.initialize({
   plugins: [PhoneRemote],
@@ -75,7 +75,7 @@ See [`examples/node`](examples/node/) for a complete, bundler-free setup.
 
 ```js
 import http from 'node:http';
-import { createRemote, printConnectInfo } from 'reveal-phone-remote/server';
+import { createRemote, printConnectInfo } from 'reveal.js-phone-remote/server';
 
 const remote = createRemote();
 const server = http.createServer((req, res) =>
@@ -143,7 +143,7 @@ The spotlight's dim colour on the deck: `.reveal-spotlight { --spotlight-dim: rg
 The spotlight overlay can be driven by something else too:
 
 ```js
-import { createSpotlight } from 'reveal-phone-remote/spotlight';
+import { createSpotlight } from 'reveal.js-phone-remote/spotlight';
 
 const spot = createSpotlight(Reveal);
 spot.update({ on: true, x: 0.5, y: 0.3, r: 0.14 }); // normalised to the slide

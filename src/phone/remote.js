@@ -4,7 +4,7 @@ const config = JSON.parse(document.getElementById("config").textContent);
 const { prefix, lang } = config;
 const t = translator(lang, config.strings);
 const key = new URLSearchParams(location.search).get("key") || "";
-const STORE = "reveal-phone-remote:";
+const STORE = "reveal.js-phone-remote:";
 
 translate(document, t);
 

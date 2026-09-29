@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import phoneRemote from 'reveal-phone-remote/vite';
+import phoneRemote from 'reveal.js-phone-remote/vite';
 
 // '::' listens on all interfaces, IPv4 and IPv6, so the phone can reach the
 // laptop – also in IPv6-only phone hotspots.

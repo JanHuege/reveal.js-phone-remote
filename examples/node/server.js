@@ -1,4 +1,4 @@
-// reveal-phone-remote without Vite: a plain node:http server.
+// reveal.js-phone-remote without Vite: a plain node:http server.
 //
 // The remote's middleware gets the first look at every request. Everything
 // else is a tiny static file server for the deck and for reveal.js and the
@@ -10,7 +10,7 @@ import { readFile } from 'node:fs/promises';
 import http from 'node:http';
 import { dirname, extname, join, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createRemote, printConnectInfo } from 'reveal-phone-remote/server';
+import { createRemote, printConnectInfo } from 'reveal.js-phone-remote/server';
 
 const PORT = Number(process.env.PORT) || 8000;
 
@@ -22,7 +22,7 @@ const dirOf = (specifier) => dirname(fileURLToPath(import.meta.resolve(specifier
 // URL prefix -> directory on disk.
 const ROOTS = {
   '/vendor/reveal.js/': dirOf('reveal.js'),
-  '/vendor/reveal-phone-remote/': dirOf('reveal-phone-remote'),
+  '/vendor/reveal.js-phone-remote/': dirOf('reveal.js-phone-remote'),
   '/': here,
 };
 

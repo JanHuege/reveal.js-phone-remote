@@ -1,6 +1,6 @@
 # Demo: Vite
 
-A small reveal.js deck wired up with `reveal-phone-remote`. The slides walk you
+A small reveal.js deck wired up with `reveal.js-phone-remote`. The slides walk you
 through every feature – read the speaker notes on your phone.
 
 ```sh

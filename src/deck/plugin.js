@@ -4,7 +4,7 @@
 // Stays silent when the server isn't there (static hosting, PDF export,
 // speaker view).
 //
-//   import PhoneRemote from 'reveal-phone-remote';
+//   import PhoneRemote from 'reveal.js-phone-remote';
 //   Reveal.initialize({ plugins: [PhoneRemote], phoneRemote: { … } });
 
 import { createSpotlight } from './spotlight.js';
